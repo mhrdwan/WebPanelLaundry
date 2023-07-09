@@ -4,8 +4,8 @@ import { useNavigate } from 'react-router-dom';
 function Login() {
     const navigate = useNavigate();
     const dataLogin = {
-        username: "admin",
-        password: "admin",
+        username: "ana",
+        password: "ana",
         role: "admin"
     };
 
