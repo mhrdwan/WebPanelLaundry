@@ -1,11 +1,16 @@
-import { MailOutlined, AppstoreOutlined } from '@ant-design/icons';
-import { Menu } from 'antd';
+import { MailOutlined, AppstoreOutlined, MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
+import { Button, Menu } from 'antd';
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
 const { SubMenu } = Menu;
 
 const NavbarSide = () => {
   const navigate = useNavigate();
+  const [collapsed, setCollapsed] = useState(false);
+  const toggleCollapsed = () => {
+    setCollapsed(!collapsed);
+  };
 
   const onClick = (e) => {
     if (e.key === "dashboard") {
@@ -20,22 +25,29 @@ const NavbarSide = () => {
   }
 
   return (
-    <Menu
-      onClick={onClick}
-      style={{ width: 256 }}
-      defaultSelectedKeys={['1']}
-      defaultOpenKeys={['dashboard']}
-      mode="inline"
-    >
-      <Menu.Item icon={<AppstoreOutlined />} key="dashboard">Dashboard</Menu.Item>
-      <SubMenu key="sub1" icon={<MailOutlined />} title="Menu Paket">
-        <Menu.Item key="promo">
-          Promo
-        </Menu.Item>
-        <Menu.Item key="paket">Paket</Menu.Item>
-      </SubMenu>
-      <Menu.Item key="keluar">Keluar</Menu.Item>
-    </Menu>
+    <div style={{ display: 'flex', flexDirection: 'column' }}>
+      <Button
+        onClick={toggleCollapsed}
+        style={{ marginBottom: 16 }}
+      >
+        {collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+      </Button>
+      <Menu
+         onClick={onClick}
+         defaultSelectedKeys={['1']}
+         defaultOpenKeys={['dashboard']}
+         mode="inline"
+         inlineCollapsed={collapsed}
+         itemIcon={null}
+      >
+        <Menu.Item icon={<AppstoreOutlined />} key="dashboard">Dashboard</Menu.Item>
+        <SubMenu key="sub1" icon={<MailOutlined />} title="Menu Paket">
+          <Menu.Item key="promo">Promo</Menu.Item>
+          <Menu.Item key="paket">Paket</Menu.Item>
+        </SubMenu>
+        <Menu.Item key="keluar">Keluar</Menu.Item>
+      </Menu>
+    </div>
   );
 };
 

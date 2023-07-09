@@ -1,0 +1,11 @@
+/* NavbarSide.css */
+.btn-collapse {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 16px;
+  }
+  
+  .ant-layout-sider-trigger{
+    background-color: brown !;
+    color: blueviolet !important;
+  }
