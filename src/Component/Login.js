@@ -27,7 +27,7 @@ function Login() {
     return (
         <>
             <Row style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <Col>
+                <Col sm>
                     <Card>
                         <Form
                             name="basic"
