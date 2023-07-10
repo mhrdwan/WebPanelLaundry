@@ -7,7 +7,7 @@ function Paket() {
     return (
         <div>
             <PageWrapper>
-                <h1>Paket</h1>
+                <h5>Paket</h5>
             </PageWrapper>
 
         </div>

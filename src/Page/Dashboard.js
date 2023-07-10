@@ -23,6 +23,10 @@ function Dashboard() {
       title: 'Tags',
       key: 'tags',
       dataIndex: 'tags',
+      sorter: {
+        compare: (a, b) => a.tags.join('').localeCompare(b.tags.join('')),
+        multiple: 1,
+      },
       render: (_, { tags }) => (
         <>
           {tags.map((tag) => {
@@ -72,10 +76,14 @@ function Dashboard() {
       tags: ['Sudah Bayar'],
     },
   ];
+  const onChange = (pagination, filters, sorter, extra) => {
+    console.log('params', pagination, filters, sorter, extra);
+  };
   return (
     <div>
       <PageWrapper>
         <Table columns={columns} dataSource={data}
+        onChange={onChange}
         />
       </PageWrapper>
 

@@ -6,6 +6,7 @@ import PrivateRoute from './Page/PrivateRoute';
 import NavbarSide from './NavbarSide/NavbarSide';
 import Paket from './Page/Paket';
 import Promo from './Page/Promo';
+import OrderLaundry from './Component/OrderLaundry';
 
 function MainContent() {
   const location = useLocation();
@@ -24,6 +25,7 @@ function MainContent() {
         <Route path="/login" element={<Login />} />
         <Route path="/paket" element={<Paket />} />
         <Route path="/promo" element={<Promo />} />
+        <Route path="/order" element={<OrderLaundry />} />
         <Route path="/dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>} />
         <Route path="*" element={<Navigate to="/dashboard" replace />} />
       </Routes>
