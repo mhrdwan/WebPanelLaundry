@@ -13,13 +13,13 @@ function MainContent() {
 
   // Add these lines
   const contentStyle = showNavbar
-    ? { display: 'flex' }
-    : { display: 'flex', justifyContent: 'center' }; // center the content if no navbar
+  ? { display: 'flex', flexGrow: 1, overflow: 'auto' }
+  : { display: 'flex', justifyContent: 'center', flexGrow: 1, overflow: 'auto' };
 
   return (
     <div style={contentStyle}>
       {showNavbar && <NavbarSide />}
-      <Routes>
+      <Routes style={{ flexGrow: 1 }}>
         <Route path="/" element={<Login />} />
         <Route path="/login" element={<Login />} />
         <Route path="/paket" element={<Paket />} />
@@ -27,15 +27,18 @@ function MainContent() {
         <Route path="/dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>} />
         <Route path="*" element={<Navigate to="/dashboard" replace />} />
       </Routes>
+
     </div>
   );
 }
 
 function App() {
   return (
-    <Router>
-      <MainContent />
-    </Router>
+    <div className='App'>
+      <Router>
+        <MainContent />
+      </Router>
+    </div>
   );
 }
 

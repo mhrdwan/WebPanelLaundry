@@ -20,6 +20,7 @@ const NavbarSide = () => {
     } else if (e.key === "promo") {
       navigate("/promo");
     } else if (e.key === "keluar") {
+      localStorage.removeItem("role")
       navigate("/login");
     }
   }

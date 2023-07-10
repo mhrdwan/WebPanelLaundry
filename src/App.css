@@ -1,5 +1,14 @@
 .App {
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;  /* Mengisi tinggi viewport */
+  overflow: hidden;
+}
+
+.content {
+  display: flex;
+  flex-grow: 1;
+  overflow: auto;  /* Mengizinkan pengguna untuk melakukan scroll jika kontennya melebihi tinggi elemen */
 }
 
 .App-logo {

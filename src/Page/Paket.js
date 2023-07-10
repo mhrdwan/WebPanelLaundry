@@ -1,17 +1,15 @@
 import { Card } from 'antd'
 import React from 'react'
 import { Row, Col } from 'react-bootstrap'
+import PageWrapper from '../Component/PageWrapper'
 
 function Paket() {
     return (
         <div>
-            <Row>
-                <Card>
-                    <Col>
-                        <h1>Paket</h1>
-                    </Col>
-                </Card>
-            </Row>
+            <PageWrapper>
+                <h1>Paket</h1>
+            </PageWrapper>
+
         </div>
     )
 }
