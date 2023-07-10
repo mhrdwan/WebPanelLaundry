@@ -1,11 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PageWrapper from './PageWrapper'
 import { Col, Row } from 'react-bootstrap'
-import { Button, Input, Form, Select, DatePicker , Alert } from 'antd'
+import { Button, Input, Form, Select, DatePicker, Alert } from 'antd'
 
 function OrderLaundry() {
     const [form] = Form.useForm();
-
+    const [totalHarga, setTotalHarga] = useState(0);
     const onFinish = (values) => {
         console.log('Success:', values);
         <Alert message="Order Dibuat" type="success" showIcon />
@@ -21,11 +21,21 @@ function OrderLaundry() {
             .validateFields()
             .then(values => {
                 console.log('Received values of form: ', values);
+                TotalHarga()
             })
             .catch(info => {
                 console.log('Failed:', info);
+                TotalHarga()
             });
     };
+
+    const TotalHarga = ()=>{
+        const hari = form.getFieldValue("hari");
+        const paket = form.getFieldValue("paket");
+        const berat = form.getFieldValue("berat");
+
+        setTotalHarga(hari * paket * berat);
+    }
 
     return (
         <div>
@@ -119,8 +129,37 @@ function OrderLaundry() {
                                     ]}
                                 >
                                     <Select
+                                    showSearch
+                                    optionFilterProp='children'
                                         placeholder="Pilih Paket"
-                                    />
+                                    >
+                                        <Select.Option value={6000}>Self Service Cuci Kering Lipat (minimal 5 kg) Rp6.000</Select.Option>
+                                        <Select.Option value={7000}>Cuci Kering Lipat (minimal 5 kg) Rp7.000</Select.Option>
+                                        <Select.Option value={8000}>Setrika (minimal 5 kg) Rp8.000</Select.Option>
+                                        <Select.Option value={8000}>Cuci Kering Lipat (minimal 3 kg) Rp8.000</Select.Option>
+                                        <Select.Option value={10000}>Cuci Kering Setrika (minimal 5 kg) Rp10.000</Select.Option>
+                                    </Select>
+                                </Form.Item>
+                                <Form.Item
+                                    label="Pilih Hari"
+                                    name="hari"
+                                    rules={[
+                                        {
+                                            required: true,
+                                            message: 'Masukkan Berat!',
+                                        },
+                                    ]}
+                                >
+                                    <Select
+                                    showSearch
+                                    optionFilterProp='children'
+                                        placeholder="Pilih Hari"
+                                    >
+                                        <Select.Option value={1}>1 Hari</Select.Option>
+                                        <Select.Option value={2}>2 Hari</Select.Option>
+                                        <Select.Option value={3}>3 Hari</Select.Option>
+                                        
+                                    </Select>
                                 </Form.Item>
                                 <Form.Item
                                     label="Berat (Kg)"
@@ -167,11 +206,12 @@ function OrderLaundry() {
                                     />
                                 </Form.Item>
                                 <Form.Item
-                                style={{marginTop:100}}
+                                    style={{ marginTop: 100 }}
                                     name="total"
-                                   
+
                                 >
-                                    <p>Harga Total Pembayaran Adalah <span><b>Rp.</b></span></p>
+                                  <p>Harga Total Pembayaran Adalah <span><b>Rp.{new Intl.NumberFormat('id-ID').format(totalHarga)}</b></span></p>
+
                                 </Form.Item>
 
                             </Col>
