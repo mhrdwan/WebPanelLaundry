@@ -4,18 +4,18 @@ import PageWrapper from '../Component/PageWrapper';
 function Dashboard() {
   const columns = [
     {
-      title: 'Name',
+      title: 'Nama',
       dataIndex: 'name',
       key: 'name',
       render: (text) => <a>{text}</a>,
     },
     {
-      title: 'Age',
+      title: 'Paket',
       dataIndex: 'age',
       key: 'age',
     },
     {
-      title: 'Address',
+      title: 'Alamat',
       dataIndex: 'address',
       key: 'address',
     },
@@ -44,36 +44,35 @@ function Dashboard() {
       ),
     },
     {
-      title: 'Action',
-      key: 'action',
-      render: (_, record) => (
-        <Space size="middle">
-          <a>Delete</a>
-        </Space>
-      ),
+      title: 'Harga',
+      key: 'harga',
+      dataIndex:"harga"
     },
   ];
   const data = [
     {
       key: '1',
       name: 'John Brown',
-      age: 32,
+      age: "Paket Laundry Biasa (Per Hari) 1KG",
       address: 'New York No. 1 Lake Park',
       tags: ['Sudah Bayar'],
+      harga: "Rp.10.000"
     },
     {
       key: '2',
       name: 'Jim Green',
-      age: 42,
+      age: "Paket Laundry Cuci Setrika (Per Hari) 1KG",
       address: 'London No. 1 Lake Park',
       tags: ['Belum Bayar'],
+      harga: "Rp.10.000"
     },
     {
       key: '3',
       name: 'Joe Black',
-      age: 32,
+      age: "Paket Dry Cleaning (Per Hari) 1KG",
       address: 'Sydney No. 1 Lake Park',
       tags: ['Sudah Bayar'],
+      harga: "Rp.10.000"
     },
   ];
   const onChange = (pagination, filters, sorter, extra) => {
